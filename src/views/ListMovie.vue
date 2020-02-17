@@ -36,7 +36,7 @@ export default {
         this.items = a.data;
         for (let i = 0; i < a.data.length; i++) {
           this.items[i].thumbnails =
-            "http://localhost:3000/" + this.items[i].thumbnails;
+            this.$urltest + this.items[i].thumbnails;
         }
         this.items = a.data;
       } catch (e) {
@@ -44,8 +44,8 @@ export default {
       }
     },
     getDetail(a) {
-      var b = { url: a.src, title: a.title };
-      this.$router.push({ name: "Details", params: { param1: b } });
+      // var b = { url: a.src, title: a.title, id:a._id };
+      this.$router.push({path: `/Details/${a._id}` });
     }
   }
 };

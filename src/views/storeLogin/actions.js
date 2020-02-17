@@ -13,3 +13,13 @@ export const clearToken = () => {
 export const changeState = ({ commit }, flag) => {
    commit('LOGIN_FLAG', flag)
 }
+
+export const saveComments = async (dispatch , param) => {
+   const result = await auth.$http.post("/movie/comment", param);
+   return result;
+}
+
+export const getComments = async (dispatch , param) => {
+   const result = await auth.$http.post("/movie/getComment", param);
+   return result;
+}
