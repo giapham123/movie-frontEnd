@@ -113,10 +113,10 @@ export default {
     this.getComment();
   },
   methods: {
-       ...mapActions("login", ["saveComments","getComments"]),
+       ...mapActions("login", ["saveComments","getComments","dataplaylist"]),
     async loaddata() {
       try {
-        const resultFilm = await this.$http.get("notes");
+        const resultFilm = await this.dataplaylist();
         this.items = resultFilm.data;
         for (let i = 0; i < resultFilm.data.length; i++) {
           this.items[i].thumbnails = this.$urltest + this.items[i].thumbnails;
@@ -130,6 +130,7 @@ export default {
       this.$router.push({path: `/Details/${item._id}` });
       this.url = item.src;
       this.title = item.title;
+      this.getComment();
     },
     loadingVideo() {
       var idOfVideo = this.$router.currentRoute.params.id;

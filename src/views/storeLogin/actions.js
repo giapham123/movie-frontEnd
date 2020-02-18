@@ -23,3 +23,8 @@ export const getComments = async (dispatch , param) => {
    const result = await auth.$http.post("/movie/getComment", param);
    return result;
 }
+
+export const dataplaylist = async (dispatch , param) => {
+   const result = await auth.$http.get("/notes/dataplaylist", param);
+   return result;
+}
