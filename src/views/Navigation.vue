@@ -45,38 +45,47 @@ export default {
     ...mapState("login", ["ilogin"]),
     menus1() {
       var menus2 = [];
-      if(this.ilogin == true){}
-      if (localStorage.getItem("ACCESS_TOKEN") != null) {
-        menus2 = [
-          { title: "Romantic", path: "/" },
-          { title: "Add Movies", path: "/AddMovie" }
-        ];
-        this.loginLabel = "Log Out";
+      if (this.ilogin == true) {
+        if (localStorage.getItem("ACCESS_TOKEN") != null) {
+          menus2 = [
+            { title: "Romantic", path: "/" },
+            { title: "Add Movies", path: "/AddMovie" }
+          ];
+          this.loginLabel = "Log Out";
+        }
       } else {
         menus2 = [{ title: "Romantic", path: "/" }];
+        this.loginLabel = "Log In";
       }
       return menus2;
     }
   },
-
+  created() {
+    this.accessLogin();
+  },
   methods: {
-    ...mapActions("login", ["changeState", 'clearToken']),
+    ...mapActions("login", ["changeState", "clearToken"]),
     async searchData() {
       const a = await this.$http.post("notes/searchMovie", {
         title: this.search
       });
       this.$bus.$emit("searchEvent", a.data);
     },
-     async showdialog() {
-      if(this.loginLabel == 'Log Out'){
-        this.changeState = 'false'
+    async showdialog() {
+      if (this.loginLabel == "Log Out") {
+        this.changeState(false);
         await this.clearToken();
-      }else{
+      } else {
         this.show = true;
       }
     },
     close() {
       this.show = false;
+    },
+    accessLogin() {
+      if (localStorage.getItem("ACCESS_TOKEN") != null) {
+        this.changeState(true);
+      }
     }
   }
 };

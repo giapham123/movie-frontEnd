@@ -67,7 +67,7 @@ export default {
       };
 
       const a = await this.loginResult(param);
-      this.changeState("true");
+      this.changeState(true);
       this.close();
     }
   }
