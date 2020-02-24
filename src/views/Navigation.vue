@@ -48,13 +48,16 @@ export default {
       if (this.ilogin == true) {
         if (localStorage.getItem("ACCESS_TOKEN") != null) {
           menus2 = [
-            { title: "Romantic", path: "/" },
-            { title: "Add Movies", path: "/AddMovie" }
+            // { title: "Romantic", path: "/" },
+            { title: "Add Movies", path: "/AddMovie" },
+            // { title: "Action Movie", path: "/ActionMovie" }
           ];
           this.loginLabel = "Log Out";
         }
       } else {
-        menus2 = [{ title: "Romantic", path: "/" }];
+        menus2 = [{ title: "Romantic", path: "/" },
+            { title: "Action Movie", path: "/ActionMovie" },
+             { title: "Anime Movie", path: "/AnimeMovie" }];
         this.loginLabel = "Log In";
       }
       return menus2;

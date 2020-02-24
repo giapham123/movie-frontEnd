@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import ListMovie from './views/ListMovie.vue'
+import ActionMovie from './views/actionMovie'
 import Details from './views/Details.vue'
 import AddMovie from '@/views/AddMovie'
+import AnimeMovie from './views/animeMovie'
 
 
 Vue.use(Router)
@@ -15,6 +17,24 @@ const router = new Router({
       path: '/',
       name: 'ListMovie',
       component: ListMovie, props: true,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/ActionMovie',
+      name: 'Action Movie',
+      component: ActionMovie,
+      props: true,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/AnimeMovie',
+      name: 'Anime Movie',
+      component: AnimeMovie,
+      props: true,
       meta: {
         requiresAuth: false
       }
