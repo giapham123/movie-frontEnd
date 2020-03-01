@@ -5,6 +5,7 @@ import ActionMovie from './views/actionMovie'
 import Details from './views/Details.vue'
 import AddMovie from '@/views/AddMovie'
 import AnimeMovie from './views/animeMovie'
+import seriesMovie from './views/seriesMovie'
 
 
 Vue.use(Router)
@@ -34,6 +35,15 @@ const router = new Router({
       path: '/AnimeMovie',
       name: 'Anime Movie',
       component: AnimeMovie,
+      props: true,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/SeriesMovie',
+      name: 'Series Movies',
+      component: seriesMovie,
       props: true,
       meta: {
         requiresAuth: false

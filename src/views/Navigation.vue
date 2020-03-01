@@ -57,7 +57,8 @@ export default {
       } else {
         menus2 = [{ title: "Romantic", path: "/" },
             { title: "Action Movie", path: "/ActionMovie" },
-             { title: "Anime Movie", path: "/AnimeMovie" }];
+             { title: "Anime Movie", path: "/AnimeMovie" },
+             { title: "Series Movies", path: "/SeriesMovie" }];
         this.loginLabel = "Log In";
       }
       return menus2;

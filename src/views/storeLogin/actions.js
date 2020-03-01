@@ -28,3 +28,12 @@ export const dataplaylist = async (dispatch , param) => {
    const result = await auth.$http.get("/notes/dataplaylist", param);
    return result;
 }
+
+export const saveSeriesMovie = async (dispatch , param) => {
+   const result = await auth.$http.post("/movie/series", param);
+   return result;
+}
+export const seriesMovieEpisode = async (dispatch , param) => {
+   const result = await auth.$http.post("/movie/seriesMovieEpisode", param);
+   return result;
+}

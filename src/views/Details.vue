@@ -113,11 +113,31 @@ export default {
     this.getComment();
   },
   methods: {
-       ...mapActions("login", ["saveComments","getComments","dataplaylist"]),
+       ...mapActions("login", ["saveComments","getComments","dataplaylist","seriesMovieEpisode"]),
     async loaddata() {
       try {
+        var isSerialMovie = 0;
         const resultFilm = await this.dataplaylist();
-        this.items = resultFilm.data;
+        // this.items = resultFilm.data;
+        //
+        var idOfVideo = this.$router.currentRoute.params.id;
+
+        var param = {
+          idmovie : idOfVideo
+        }
+        
+        for (let item of resultFilm.data) {
+          if (item._id == idOfVideo) {
+            if(item.category == 4){
+              const resultFilm1 = await this.seriesMovieEpisode(param);
+              this.items = resultFilm1.data
+            }else{
+              this.items = resultFilm.data;
+            }
+          }
+        }
+       
+        //
         for (let i = 0; i < resultFilm.data.length; i++) {
           this.items[i].thumbnails = this.$urltest + this.items[i].thumbnails;
         }

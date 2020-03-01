@@ -33,7 +33,7 @@ export default {
   methods: {
     async loaddata() {
       try {
-        const a = await this.$http.get("notes");
+        const a = await this.$http.get("movie/actionMovie");
         this.items = a.data;
         for (let i = 0; i < a.data.length; i++) {
           this.items[i].thumbnails =
